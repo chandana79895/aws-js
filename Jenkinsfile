@@ -16,10 +16,11 @@ pipeline {
                 nodejs(nodeJSInstallationName: "node 8.9.4") {
                     withEnv(["PATH+PULUMI=$HOME/.pulumi/bin"]) {
                         sh "cd infrastructure && npm install"
-                        sh "pulumi stack select ${PULUMI_STACK} --cwd infrastructure/"
-                        sh "pulumi up --yes --cwd infrastructure/"
+                        sh "pulumi stack select ${PULUMI_STACK}"
+                        sh "pulumi up --yes"
                     }
                 }
             }
         }
     }
+}
